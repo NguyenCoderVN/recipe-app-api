@@ -1,6 +1,6 @@
 name: Checks
 
-on: [push]
+on: [ push ]
 
 jobs:
   test:
@@ -33,7 +33,7 @@ jobs:
         run: |
           source .venv/bin/activate
           docker-compose run --rm app sh -c "python manage.py test"
-lint:
+  lint:
     name: Lint
     runs-on: ubuntu-20.04
     steps:
@@ -51,6 +51,7 @@ lint:
         with:
           python-version: '3.x'
           cache: 'pip'
+      - name: Install dependencies
         run: |
           pip install docker-compose
       - name: Lint
